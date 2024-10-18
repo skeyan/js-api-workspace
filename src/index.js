@@ -34,22 +34,56 @@ function processData(data) {
 }
 
 /**
+ * Posts the resulting data to the API.
+ * @param {Object} data - Data to be posted
+ * @returns {Promise<Object>} The response from the API.
+ * @throws {Error} If the post operation fails.
+ */
+async function postResult(data) {
+	try {
+		const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+		  method: 'POST',
+		  body: JSON.stringify({
+			title: 'Longest Title Found',
+			body: `The longest title is: "${data.title}" (Post ID: ${data.id})`,
+			userId: 1,
+		  }),
+		  headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+		  },
+		});
+	
+		return await response.json();
+	  } catch (error) {
+		console.error('Error posting data:', error);
+		throw error;
+	  }
+}
+
+/**
  * Orchestrates the entire process of fetching data, finding the most available date, and posting the result.
  * @returns {Promise<void>}
  */
 async function solution() {
-	// Fetch data
-	const data = await fetchData();
+	try {
+		// Fetch data
+		const data = await fetchData();
 
-	// Process data
-	if (data) {
-		console.log('Data fetched:', data);
-		console.log('Processing data...');
-		processedData = processData(data);
-		console.log('Processed data:', processedData);
+		// Process data
+		if (data) {
+			console.log('Data fetched:', data);
+			console.log('Processing data...');
 
-		// Post data
+			processedData = processData(data);
+			console.log('Processed data:', processedData);
 
+			// Post data
+			console.log('Posting the processed data...')
+			const result = await postResult(processedData);
+			console.log('Post result:', result);
+		}
+	} catch(error) {
+		console.log('Error:', error);
 	}
 }
 
