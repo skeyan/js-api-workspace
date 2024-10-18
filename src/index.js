@@ -8,12 +8,6 @@ let data = null;
 async function fetchData() {
 	try {
 		const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-		// .then((res) => res.json())
-		// .then((json) => {
-		// 	console.log('Response fetched:', json);
-		// 	data = json;
-		// 	document.getElementById('apiData').textContent = data[0]?.title;
-		// });
 		return await response.json();
 	  } catch (error) {
 		console.error('Error fetching data:', error);
@@ -76,6 +70,7 @@ async function solution() {
 
 			processedData = processData(data);
 			console.log('Processed data:', processedData);
+			document.getElementById('apiData').textContent = processedData.title;
 
 			// Post data
 			console.log('Posting the processed data...')
