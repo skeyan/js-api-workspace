@@ -1,1 +1,1 @@
-(()=>{let t=null;fetch("https://jsonplaceholder.typicode.com/posts").then((t=>t.json())).then((e=>{console.log(e),t=e,document.getElementById("apiData").textContent=t[0]?.title}))})();
+!async function(){const t=await async function(){try{const t=await fetch("https://jsonplaceholder.typicode.com/posts");return await t.json()}catch(t){console.error("Error fetching data:",t)}}();t&&console.log("Data fetched:",t)}();
