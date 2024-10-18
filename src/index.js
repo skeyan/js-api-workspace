@@ -20,8 +20,17 @@ async function fetchData() {
 	  }
 }
 
-async function processData() {
-	
+/**
+ * Finds the post with the longest title.
+ * @param {Array<Object>} data - An array of post objects.
+ * @returns {Object|null} The post with the longest title, or null if no posts are found.
+ */
+function processData(data) {
+	if (data.length === 0) return null;
+  
+	return data.reduce((longest, current) => 
+	  current.title.length > longest.title.length ? current : longest
+	);
 }
 
 /**
@@ -29,9 +38,18 @@ async function processData() {
  * @returns {Promise<void>}
  */
 async function solution() {
+	// Fetch data
 	const data = await fetchData();
+
+	// Process data
 	if (data) {
 		console.log('Data fetched:', data);
+		console.log('Processing data...');
+		processedData = processData(data);
+		console.log('Processed data:', processedData);
+
+		// Post data
+
 	}
 }
 
