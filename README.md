@@ -9,3 +9,4 @@ Reference: https://jsonplaceholder.typicode.com/guide/
 2. `npm install`
 3. Install Live Server using VSCode.
 4. Open `dist/index.html` using Live Server.
+5. To use webpack to compile new changes, run `npx webpack` in root directory.
