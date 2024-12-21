@@ -2,7 +2,8 @@ import { processData } from "./data-processor";
 import { fetchData, postResult } from "./data-service";
 
 /**
- * Orchestrates the entire process of fetching data, finding the most available date, and posting the result.
+ * Orchestrates the entire process of fetching data, processing the data, and posting the result.
+ * @async
  * @returns {Promise<void>}
  */
 async function solution() {
@@ -10,11 +11,11 @@ async function solution() {
 		// Fetch data
 		const data = await fetchData();
 
-		// Process data
 		if (data) {
 			console.log('Data fetched:', data);
 			console.log('Processing data...');
 
+			// Process data
 			let processedData = processData(data);
 			console.log('Processed data:', processedData);
 			document.getElementById('apiData').textContent = processedData.title;

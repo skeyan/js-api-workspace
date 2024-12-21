@@ -1,7 +1,7 @@
 /**
- * Finds the post with the longest title.
- * @param {Array<Object>} data - An array of post objects.
- * @returns {Object|null} The post with the longest title, or null if no posts are found.
+ * Processes the data
+ * @param {Array<Object>} data - TBA
+ * @returns {Object|null} TBA
  */
 export function processData(data) {
 	if (data.length === 0) return null;
